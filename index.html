@@ -25,11 +25,11 @@
         .serif-title { font-family: 'Playfair Display', serif; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         .animate-fadeIn { animation: fadeIn 0.3s ease-in-out; }
-        .nav-icon { background: transparent !important; }
     </style>
 </head>
 <body class="text-espresso min-h-screen flex flex-col justify-between">
 
+    <!-- HEADER / NAVIGATION -->
     <header class="bg-espresso text-kraftCream shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-4 py-2 flex justify-between items-center h-24 sm:h-28">
             <div class="flex items-center space-x-2 cursor-pointer" onclick="changePage('beranda')">
@@ -58,8 +58,10 @@
         </div>
     </header>
 
+    <!-- MAIN CONTENT -->
     <main class="flex-grow container mx-auto px-6 py-8">
 
+        <!-- ROOM 1: BERANDA -->
         <div id="page-beranda" class="page-room animate-fadeIn">
             <div class="relative rounded-3xl overflow-hidden min-h-[calc(100vh-180px)] flex items-end shadow-2xl bg-neutral-900">
                 <img src="backgroundFix.png" alt="Latar Belakang" class="absolute inset-0 w-full h-full object-cover object-center z-0 opacity-80">
@@ -78,6 +80,7 @@
             </div>
         </div>
 
+        <!-- ROOM 2: KATALOG -->
         <div id="page-katalog" class="page-room hidden animate-fadeIn">
             <div class="max-w-4xl mx-auto bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-espresso/10 mb-12">
                 <h2 class="serif-title text-xl font-bold text-espresso mb-3 flex items-center gap-2">
@@ -89,6 +92,7 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Kopi Bubuk -->
                 <div class="bg-white rounded-2xl p-5 shadow-sm border border-espresso/10 flex flex-col justify-between hover:shadow-md transition">
                     <div>
                         <div class="w-full h-64 overflow-hidden rounded-xl bg-neutral-50 mb-4 flex items-center justify-center border">
@@ -101,6 +105,7 @@
                         Lihat Produk
                     </button>
                 </div>
+                <!-- Green Bean -->
                 <div class="bg-white rounded-2xl p-5 shadow-sm border border-espresso/10 flex flex-col justify-between hover:shadow-md transition">
                     <div>
                         <div class="w-full h-64 overflow-hidden rounded-xl bg-neutral-50 mb-4 flex items-center justify-center border">
@@ -113,6 +118,7 @@
                         Lihat Produk
                     </button>
                 </div>
+                <!-- Roasted Bean -->
                 <div class="bg-white rounded-2xl p-5 shadow-sm border border-espresso/10 flex flex-col justify-between hover:shadow-md transition">
                     <div>
                         <div class="w-full h-64 overflow-hidden rounded-xl bg-neutral-50 mb-4 flex items-center justify-center border">
@@ -128,6 +134,7 @@
             </div>
         </div>
 
+        <!-- ROOM 3: DETAIL PRODUK -->
         <div id="page-detail" class="page-room hidden bg-white rounded-3xl p-6 md:p-10 shadow-sm border border-espresso/5 animate-fadeIn">
             <button onclick="changePage('katalog')" class="text-xs font-bold text-espresso/60 hover:text-espresso mb-6 flex items-center gap-1 cursor-pointer underline">
                 ← Kembali ke Katalog
@@ -142,7 +149,8 @@
                     <div id="detail-text-content">
                         <h2 id="detail-title-view" class="serif-title text-2xl font-bold text-espresso mb-4 border-b pb-2">Nama Produk</h2>
                         <div id="detail-desc-view" class="text-xs md:text-sm text-espresso/90 mb-6 space-y-6 leading-relaxed text-justify">
-                            </div>
+                            <!-- Deskripsi dinamis terisi di sini -->
+                        </div>
                         <div id="detail-selection-area" class="border-t pt-4"></div>
                     </div>
                     
@@ -153,6 +161,7 @@
             </div>
         </div>
 
+        <!-- ROOM 4: KERANJANG -->
         <div id="page-keranjang" class="page-room hidden animate-fadeIn">
             <h2 class="serif-title text-3xl font-bold mb-8 text-center border-b-2 border-espresso/10 pb-4 text-espresso uppercase tracking-widest">Keranjang Belanja</h2>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -205,6 +214,7 @@
         <p>&copy; 2026 WAWOMUDHA COFFEE BAJAWA - UAS IMK KELOMPOK 5</p>
     </footer>
 
+    <!-- JAVASCRIPT LOGIC (UPDATED WITH VARIANT FUNCTIONALITY) -->
     <script>
         const productPrices = {
             bubuk: { "100gr": 30000, "250gr": 55000, "500gr": 105000 },
@@ -216,70 +226,17 @@
             bubuk: {
                 title: "Kopi Bubuk",
                 img: "kopidanbubuk.png",
-                desc: `
-                    <div class="space-y-4">
-                        <div>
-                            <p class="font-bold text-base text-espresso flex items-center gap-2">☕ Medium Roast</p>
-                            <p class="mt-1 text-espresso/80">Nikmati kemudahan menyeduh kopi berkualitas kafe langsung di rumah Anda. Kopi bubuk Medium Roast ini menghadirkan keseimbangan rasa yang sempurna antara keasaman buah yang segar dan manisnya cokelat. Praktis, segar, dan kaya aroma.</p>
-                            <div class="pl-6 mt-2 space-y-1 text-xs md:text-sm text-espresso/70">
-                                <p class="flex items-start gap-1">🫘 <span><strong>Profil Rasa:</strong> Brown Sugar, Milk Chocolate, Citrus Hint.</span></p>
-                                <p class="flex items-start gap-1">🫘 <span><strong>Karakter:</strong> Keasaman sedang yang bersih (clean acidity), bodi yang pas (smooth), dan aroma aromatik yang kuat saat diseduh.</span></p>
-                            </div>
-                        </div>
-                        <div class="pt-2">
-                            <p class="font-bold text-base text-espresso flex items-center gap-2">☕ Medium to Full Roast (Medium-Dark)</p>
-                            <p class="mt-1 text-espresso/80">Solusi praktis untuk Anda pencinta kopi hitam yang pekat atau penggemar kopi susu rumahan. Kopi bubuk tingkat Medium to Full ini menghasilkan seduhan yang tebal, beraroma kuat, dan bebas dari rasa asam yang dominan.</p>
-                            <div class="pl-6 mt-2 space-y-1 text-xs md:text-sm text-espresso/70">
-                                <p class="flex items-start gap-1">🫘 <span><strong>Profil Rasa (Notes):</strong> Dark Chocolate, Bold Caramel, Toasted Nuts.</span></p>
-                                <p class="flex items-start gap-1">🫘 <span><strong>Karakter:</strong> Rendah asam (aman di lambung), bodi sangat tebal (heavy body), dengan rasa pahit-manis cokelat yang tertinggal lama.</span></p>
-                            </div>
-                        </div>
-                    </div>
-                `
+                desc: '<div class="space-y-4"><div><p class="font-bold text-base text-espresso flex items-center gap-2">☕ Medium Roast</p><p class="mt-1 text-espresso/80">Nikmati kemudahan menyeduh kopi berkualitas kafe langsung di rumah Anda. Kopi bubuk Medium Roast ini menghadirkan keseimbangan rasa yang sempurna antara keasaman buah yang segar dan manisnya cokelat. Praktis, segar, dan kaya aroma.</p><div class="pl-6 mt-2 space-y-1 text-xs md:text-sm text-espresso/70"><p class="flex items-start gap-1">🫘 <span><strong>Profil Rasa:</strong> Brown Sugar, Milk Chocolate, Citrus Hint.</span></p><p class="flex items-start gap-1">🫘 <span><strong>Karakter:</strong> Keasaman sedang yang bersih (clean acidity), bodi yang pas (smooth), dan aroma aromatik yang kuat saat diseduh.</span></p></div></div><div class="pt-2"><p class="font-bold text-base text-espresso flex items-center gap-2">☕ Medium to Full Roast (Medium-Dark)</p><p class="mt-1 text-espresso/80">Solusi praktis untuk Anda pencinta kopi hitam yang pekat atau penggemar kopi susu rumahan. Kopi bubuk tingkat Medium to Full ini menghasilkan seduhan yang tebal, beraroma kuat, dan bebas dari rasa asam yang dominan.</p><div class="pl-6 mt-2 space-y-1 text-xs md:text-sm text-espresso/70"><p class="flex items-start gap-1">🫘 <span><strong>Profil Rasa (Notes):</strong> Dark Chocolate, Bold Caramel, Toasted Nuts.</span></p><p class="flex items-start gap-1">🫘 <span><strong>Karakter:</strong> Rendah asam (aman di lambung), bodi sangat tebal (heavy body), dengan rasa pahit-manis cokelat yang tertinggal lama.</span></p></div></div></div>'
             },
             green: {
                 title: "Green Bean",
                 img: "GreenBean.jpeg",
-                desc: `
-                    <div class="space-y-4">
-                        <div>
-                            <p class="font-bold text-base text-espresso flex items-center gap-2">☕ Green Bean - Full Washed Grade 1</p>
-                            <p class="mt-1 text-espresso/80">Biji kopi mentah (green bean) kualitas premium dari dataran tinggi Bajawa, Flores. Dipetik merah sempurna oleh petani lokal dan diproses dengan standar kebersihan tinggi untuk menjaga konsistensi rasa saat Anda sangrai (roasting).</p>
-                            <p class="mt-4 font-semibold text-espresso">Mengapa Memilih Green Bean Kami?</p>
-                            <div class="pl-6 mt-2 space-y-1 text-xs md:text-sm text-espresso/70">
-                                <p class="flex items-start gap-1">🫘 <span><strong>Air Stabil:</strong> Dijaga di angka 11.5%, ideal untuk penyimpanan jangka panjang dan memudahkan penyerapan panas saat roasting.</span></p>
-                                <p class="flex items-start gap-1">🫘 <span><strong>Sortir Ketat:</strong> Minim defect (biji pijah/berlubang) sehingga rendemen hasil sangrai lebih maksimal.</span></p>
-                                <p class="flex items-start gap-1">🫖 <span><strong>Fresh Crop:</strong> Hasil panen terbaru untuk menjaga kesegaran aroma alami kopi.</span></p>
-                            </div>
-                        </div>
-                    </div>
-                `
+                desc: '<div class="space-y-4"><div><p class="font-bold text-base text-espresso flex items-center gap-2">☕ Green Bean - Full Washed Grade 1</p><p class="mt-1 text-espresso/80">Biji kopi mentah (green bean) kualitas premium dari dataran tinggi Bajawa, Flores. Dipetik merah sempurna oleh petani lokal dan diproses dengan standar kebersihan tinggi untuk menjaga konsistensi rasa saat Anda sangrai (roasting).</p><p class="mt-4 font-semibold text-espresso">Mengapa Memilih Green Bean Kami?</p><div class="pl-6 mt-2 space-y-1 text-xs md:text-sm text-espresso/70"><p class="flex items-start gap-1">🫘 <span><strong>Air Stabil:</strong> Dijaga di angka 11.5%, ideal untuk penyimpanan jangka panjang dan memudahkan penyerapan panas saat roasting.</span></p><p class="flex items-start gap-1">🫘 <span><strong>Sortir Ketat:</strong> Minim defect (biji pecah/berlubang) sehingga rendemen hasil sangrai lebih maksimal.</span></p><p class="flex items-start gap-1">🫖 <span><strong>Fresh Crop:</strong> Hasil panen terbaru untuk menjaga kesegaran aroma alami kopi.</span></p></div></div></div>'
             },
             roasted: {
                 title: "Roasted Bean",
                 img: "roastedbeanFixUsed.png",
-                desc: `
-                    <div class="space-y-4">
-                        <div>
-                            <p class="font-bold text-base text-espresso flex items-center gap-2">☕ Medium Roast</p>
-                            <p class="mt-1 text-espresso/80">Nikmati keseimbangan rasa sempurna dalam setiap cangkir. Pada tingkat sangrai Medium, karakter asli dari tanah tempat kopi ini tumbuh masih terjaga dengan baik, berpadu apik dengan manisnya karamelisasi alami.</p>
-                            <div class="pl-6 mt-2 space-y-1 text-xs md:text-sm text-espresso/70">
-                                <p class="flex items-start gap-1">🫘 <span><strong>Profil Rasa (Notes):</strong> Brown Sugar, Milk Chocolate, Roasted Hazelnut.</span></p>
-                                <p class="flex items-start gap-1">🫘 <span><strong>Karakter:</strong> Keasaman yang bersih dan segar, bodi yang seimbang (well-balanced), serta rasa manis yang tertinggal lama di tenggorokan (sweet aftertaste).</span></p>
-                                <p class="flex items-start gap-1 text-forestGreen font-medium">🫖 <span><strong>Rekomendasi Seduh:</strong> Sangat cocok untuk metode manual brew (V60/Filter) bagi Anda yang menyukai kopi hitam dengan aroma yang kaya dan kompleks.</span></p>
-                            </div>
-                        </div>
-                        <div class="pt-2">
-                            <p class="font-bold text-base text-espresso flex items-center gap-2">☕ Medium to Full Roast (Medium-Dark)</p>
-                            <p class="mt-1 text-espresso/80">Bagi Anda pencinta kopi dengan rasa yang mantap, tebal, dan intens. Proses sangrai Medium to Full meminimalkan rasa asam dan mengeluarkan minyak alami biji kopi, menciptakan sensasi rasa pahit-manis yang kuat dan aroma yang memikat.</p>
-                            <div class="pl-6 mt-2 space-y-1 text-xs md:text-sm text-espresso/70">
-                                <p class="flex items-start gap-1">🫘 <span><strong>Profil Rasa (Notes):</strong> Dark Chocolate, Bold Caramel, Hint of Spices.</span></p>
-                                <p class="flex items-start gap-1">🫘 <span><strong>Karakter:</strong> Rasa asam hampir nol, bodi sangat tebal (heavy body), dengan sensasi rasa cokelat pekat yang kuat di mulut (bold mouthfeel).</span></p>
-                                <p class="flex items-start gap-1 text-forestGreen font-medium">🫖 <span><strong>Rekomendasi Seduh:</strong> Pilihan terbaik sebagai bahan dasar Espresso, Kopi Susu, atau Kopi Tubruk tradisional. Karakter rasanya tetap kuat dan tidak tenggelam saat dicampur dengan susu atau krimer.</span></p>
-                            </div>
-                        </div>
-                    </div>
-                `
+                desc: '<div class="space-y-4"><div><p class="font-bold text-base text-espresso flex items-center gap-2">☕ Medium Roast</p><p class="mt-1 text-espresso/80">Nikmati keseimbangan rasa sempurna dalam setiap cangkir. Pada tingkat sangrai Medium, karakter asli dari tanah tempat kopi ini tumbuh masih terjaga dengan baik, berpadu apik dengan manisnya karamelisasi alami.</p><div class="pl-6 mt-2 space-y-1 text-xs md:text-sm text-espresso/70"><p class="flex items-start gap-1">🫘 <span><strong>Profil Rasa (Notes):</strong> Brown Sugar, Milk Chocolate, Roasted Hazelnut.</span></p><p class="flex items-start gap-1">🫘 <span><strong>Karakter:</strong> Keasaman yang bersih dan segar, bodi yang seimbang (well-balanced), serta rasa manis yang tertinggal lama di tenggorokan (sweet aftertaste).</span></p><p class="flex items-start gap-1 text-forestGreen font-medium">🫖 <span><strong>Rekomendasi Seduh:</strong> Sangat cocok untuk metode manual brew (V60/Filter) bagi Anda yang menyukai kopi hitam dengan aroma yang kaya dan kompleks.</span></p></div></div><div class="pt-2"><p class="font-bold text-base text-espresso flex items-center gap-2">☕ Medium to Full Roast (Medium-Dark)</p><p class="mt-1 text-espresso/80">Bagi Anda pencinta kopi dengan rasa yang mantap, tebal, dan intens. Proses sangrai Medium to Full meminimalkan rasa asam dan mengeluarkan minyak alami biji kopi, menciptakan sensasi rasa pahit-manis yang kuat dan aroma yang memikat.</p><div class="pl-6 mt-2 space-y-1 text-xs md:text-sm text-espresso/70"><p class="flex items-start gap-1">🫘 <span><strong>Profil Rasa (Notes):</strong> Dark Chocolate, Bold Caramel, Hint of Spices.</span></p><p class="flex items-start gap-1">🫘 <span><strong>Karakter:</strong> Rasa asam hampir nol, bodi sangat tebal (heavy body), dengan sensasi rasa cokelat pekat yang kuat di mulut (bold mouthfeel).</span></p><p class="flex items-start gap-1 text-forestGreen font-medium">🫖 <span><strong>Rekomendasi Seduh:</strong> Pilihan terbaik sebagai bahan dasar Espresso, Kopi Susu, atau Kopi Tubruk tradisional. Karakter rasanya tetap kuat dan tidak tenggelam saat dicampur dengan susu atau krimer.</span></p></div></div></div>'
             }
         };
 
@@ -316,19 +273,46 @@
             let selectionHtml = '';
 
             if(key === 'bubuk' || key === 'roasted') {
+                // Menambahkan pilihan Varian Rasa di bagian atas pilihan ukuran kemasan
+                let variantSection = `
+                    <div class="mb-4">
+                        <label class="block text-[10px] font-bold uppercase text-espresso/60 tracking-wider mb-2">Pilih Varian Rasa (Tingkat Sangrai):</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                            <label class="border rounded-xl px-3 py-2.5 text-xs font-semibold cursor-pointer flex items-center bg-kraftCream/10 hover:bg-neutral-50 transition border-espresso/20">
+                                <input type="radio" name="variant-opt" value="Medium Roast" checked class="mr-2 accent-forestGreen"> 
+                                <span>Medium Roast</span>
+                            </label>
+                            <label class="border rounded-xl px-3 py-2.5 text-xs font-semibold cursor-pointer flex items-center bg-kraftCream/10 hover:bg-neutral-50 transition border-espresso/20">
+                                <input type="radio" name="variant-opt" value="Medium to Full Roast" class="mr-2 accent-forestGreen"> 
+                                <span>Medium to Full Roast</span>
+                            </label>
+                        </div>
+                    </div>
+                `;
+
+                let sizeButtons = '';
+                Object.keys(priceRef).forEach((s, i) => {
+                    if(s !== 'perKg') {
+                        sizeButtons += `
+                            <label class="border rounded-xl px-3 py-3 text-xs font-semibold cursor-pointer flex flex-col justify-center items-center bg-kraftCream/10 hover:bg-neutral-50 transition border-espresso/20">
+                                <div class="flex items-center mb-1">
+                                    <input type="radio" name="size-opt" value="${s}" ${i===0?'checked':''} class="mr-1.5 accent-forestGreen"> 
+                                    <span>${s}</span>
+                                </div>
+                                <span class="font-bold text-forestGreen">Rp ${priceRef[s].toLocaleString('id-ID')}</span>
+                            </label>
+                        `;
+                    }
+                });
+
                 selectionHtml = `
                     <div class="space-y-4">
-                        <label class="block text-[10px] font-bold uppercase text-espresso/60 tracking-wider">Pilih Ukuran Kemasan:</label>
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                            ${Object.keys(priceRef).filter(s => s !== 'perKg').map((s, i) => `
-                                <label class="border rounded-xl px-3 py-3 text-xs font-semibold cursor-pointer flex flex-col justify-center items-center bg-kraftCream/10 hover:bg-neutral-50 transition">
-                                    <div class="flex items-center mb-1">
-                                        <input type="radio" name="size-opt" value="${s}" ${i===0?'checked':''} class="mr-1.5"> 
-                                        <span>${s}</span>
-                                    </div>
-                                    <span class="font-bold text-forestGreen">Rp ${priceRef[s].toLocaleString('id-ID')}</span>
-                                </label>
-                            `).join('')}
+                        ${variantSection}
+                        <div>
+                            <label class="block text-[10px] font-bold uppercase text-espresso/60 tracking-wider mb-2">Pilih Ukuran Kemasan:</label>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                                ${sizeButtons}
+                            </div>
                         </div>
                         <div class="mt-4 bg-neutral-50 p-3 rounded-xl border flex items-center justify-between">
                             <label class="block text-xs font-bold uppercase text-espresso/70">Jumlah Pesanan:</label>
@@ -343,7 +327,7 @@
                             <label class="block text-xs font-bold uppercase text-espresso/70">Jumlah Kuantitas (Kg):</label>
                             <input type="number" id="prod-qty" value="1" min="1" class="w-24 p-2 border rounded-xl font-bold text-center bg-white outline-none focus:border-forestGreen">
                         </div>
-</div>`;
+                    </div>`;
             }
 
             selectArea.innerHTML = selectionHtml;
@@ -356,25 +340,29 @@
             const qty = parseInt(document.getElementById('prod-qty').value) || 1;
             let finalPrice = 0;
             let sizeName = '';
+            let variantName = '';
 
             if(key === 'green') {
-                sizeName = `${qty} Kg`;
+                sizeName = qty + " Kg";
                 finalPrice = priceRef.perKg * qty;
+                variantName = "Original Green Bean";
             } else {
                 const selectedSize = document.querySelector('input[name="size-opt"]:checked').value;
-                sizeName = `${selectedSize} (x${qty})`;
+                variantName = document.querySelector('input[name="variant-opt"]:checked').value;
+                sizeName = selectedSize + " (x" + qty + ")";
                 finalPrice = priceRef[selectedSize] * qty;
             }
 
             cart.push({ 
                 title: prod.title, 
+                variant: variantName,
                 size: sizeName, 
                 price: finalPrice, 
                 img: prod.img 
             });
 
             updateCartUI();
-            showCustomToast(prod.title, sizeName);
+            showCustomToast(prod.title, variantName + " - " + sizeName);
             changePage('katalog');
         }
 
@@ -388,10 +376,7 @@
 
             const toast = document.createElement('div');
             toast.id = 'custom-toast';
-            toast.className = `fixed bottom-10 left-1/2 transform -translate-x-1/2 z-[100] 
-                               bg-espresso text-kraftCream px-6 py-4 rounded-2xl shadow-2xl 
-                               flex items-center space-x-4 border border-kraftCream/10 
-                               animate-fadeIn transition-all duration-300 w-[90%] max-w-md`;
+            toast.className = 'fixed bottom-10 left-1/2 transform -translate-x-1/2 z-[100] bg-espresso text-kraftCream px-6 py-4 rounded-2xl shadow-2xl flex items-center space-x-4 border border-kraftCream/10 animate-fadeIn transition-all duration-300 w-[90%] max-w-md';
 
             toast.innerHTML = `
                 <div class="flex-shrink-0 bg-forestGreen text-kraftCream p-2 rounded-full">
@@ -417,16 +402,18 @@
             let total = 0;
 
             if(cart.length === 0) {
-                itemsArea.innerHTML = `<p class="text-espresso/50 text-sm text-center py-6 italic">Keranjang belanja Anda masih kosong.</p>`;
+                itemsArea.innerHTML = '<p class="text-espresso/50 text-sm text-center py-6 italic">Keranjang belanja Anda masih kosong.</p>';
             } else {
-                itemsArea.innerHTML = cart.map((item, idx) => {
+                let htmlContent = '';
+                cart.forEach((item, idx) => {
                     total += item.price;
-                    return `
+                    htmlContent += `
                         <div class="flex justify-between items-center bg-kraftCream/40 p-3 rounded-xl border border-espresso/5 text-xs">
                             <div class="flex items-center gap-3">
                                 <img src="${item.img}" class="w-12 h-12 rounded-lg bg-white border p-1 object-contain">
                                 <div>
                                     <h4 class="font-bold text-espresso">${item.title}</h4>
+                                    <p class="text-[11px] text-amber-900 font-medium">${item.variant}</p>
                                     <p class="text-espresso/60">${item.size}</p>
                                     <p class="text-forestGreen font-bold">Rp ${item.price.toLocaleString('id-ID')}</p>
                                 </div>
@@ -434,9 +421,10 @@
                             <button onclick="removeItem(${idx})" class="text-red-600 font-bold hover:underline">Hapus</button>
                         </div>
                     `;
-                }).join('');
+                });
+                itemsArea.innerHTML = htmlContent;
             }
-            document.getElementById('cart-total').innerText = `Rp ${total.toLocaleString('id-ID')}`;
+            document.getElementById('cart-total').innerText = 'Rp ' + total.toLocaleString('id-ID');
         }
 
         function removeItem(idx) {
